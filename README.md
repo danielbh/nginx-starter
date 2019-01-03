@@ -1,7 +1,7 @@
 ### Setup local https with self signed certificate
 
 Chrome 58+ requires Subject Alternative Name. This can be done with the command below
-
+```
 openssl req \
 -newkey rsa:2048 \
 -x509 \
@@ -17,17 +17,22 @@ openssl req \
 -sha256 \
 -days 365
 
+
 openssl x509 -text -noout -in localhost.crt
 
 sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain localhost.crt
+
+```
 
 Add local.website.dev to /etc/hosts
 
 ### Run docker compose
 
-docker-compose up
+`docker-compose up`
 
 ### Run the container independently
+```
 docker build -t nginx-demo .
 docker run -p 8080:8080 -it nginx-demo
+```
 
