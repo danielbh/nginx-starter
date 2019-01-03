@@ -1,0 +1,12 @@
+version: '2'
+
+services:
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./sites-enabled:/etc/nginx/sites-enabled
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./util:/etc/nginx/util
+      - ./apps:/usr/share/nginx/html
+    ports:
+      - 443:443
